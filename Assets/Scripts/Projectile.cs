@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float speed;
@@ -10,6 +11,7 @@ public class Projectile : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifeTime);
+        
     }
 
     // Update is called once per frame
