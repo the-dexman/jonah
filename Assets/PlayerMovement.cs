@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidBody.linearVelocity = new Vector3(movementInput.x * moveSpeed, rigidBody.linearVelocity.y, 0);
         animator.SetBool("isMoving", movementInput.magnitude > 0 ? true : false);
+        if (movementInput.x != 0)
+        {
+            transform.eulerAngles = new Vector3(0, -180 * Mathf.Clamp(movementInput.x, -1, 0) , 0);
+        }
+        
     }
 
     public void Move(InputAction.CallbackContext input)
